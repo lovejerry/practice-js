@@ -1,0 +1,7 @@
+
+15.2.5 变换
+context.save()
+context.restore()
+
+15.2.6 绘制图像
+context.drawImage();
