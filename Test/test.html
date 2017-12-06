@@ -1,0 +1,45 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span>AAAAA</span>
+<script type="text/javascript">
+  document.write(document.body.innerHTML);
+  console.log(document.innerHTML);
+</script>
+</body>
+</html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript">
+      <!--
+      function doPrint() {
+        bdhtml = window.document.body.innerHTML;
+        sprnstr = "\<!--startprint--\>";
+        eprnstr = "\<!--endprint--\>";
+        prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17);
+        prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));
+        window.document.body.innerHTML = prnhtml;
+        window.print();
+        location.reload();
+      }
+      //-->
+    </script>
+</head>
+<body>
+<!--startprint-->
+<table width="700" align="left" border="1">
+    <tr>
+        <td>待打印的内容</td>
+    </tr>
+</table>
+<!--endprint-->
+<input type="button" value="打印" onclick="doPrint()">
+</body>
+</html>

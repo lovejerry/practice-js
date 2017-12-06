@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+  var altwrite = document.write;
+//  altwrite("hello");
+  //1.以上代码有什么问题
+  //2.正确操作是怎样的
+  //3.bind()方法怎么实现
+
+//  altwrite()函数改变this的指向global或window对象，导致执行时提示非法调用异常，正确的方案就是使用bind()方法：
+  altwrite.bind(document)("hello");
+  altwrite.call(document, "hello");
+</script>
+<a href="https://segmentfault.com/a/1190000002662251">Javascript中bind()方法的使用与实现</a>
+</body>
+</html>
