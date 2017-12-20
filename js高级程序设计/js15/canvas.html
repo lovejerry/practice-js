@@ -13,94 +13,154 @@
     </style>
 </head>
 <body>
-    <canvas id="drawing" width="500px" height="500px"></canvas>
-    <canvas id="drawing2" width="500px" height="500px"></canvas>
-    <canvas id="drawing3" width="500px" height="500px"></canvas>
+<div>
+    <div>
+        <canvas id="drawing" width="500px" height="500px"></canvas>
+    </div>
+    <div>
+        <canvas id="drawing2" width="500px" height="500px"></canvas>
+    </div>
+    <div>
+        <canvas id="drawing3" width="500px" height="500px"></canvas>
+    </div>
+    <div>
+        <canvas id="test" width="500px" height="500px"></canvas>
+    </div>
+    <div>
+        <canvas id="test_myCanvas" width="578" height="200"></canvas>
+    </div>
+    <div>
+        <button onclick="testPrint()">print</button>
+    </div>
+</div>
+
 </body>
 <script type="text/javascript">
-    window.onload = init;
-    function init() {
-        //15.2.3 绘制路径
-        drawClock();
-        // 15.2.4 绘制文本
-        drawText();
-        // measureText width
-        drawText2();
-        // 15.2.5 变换
-        bianHuan();
-    }
-
+  window.onload = init;
+  function init() {
     //15.2.3 绘制路径
-    function drawClock() {
-        var drawing = document.getElementById("drawing");
-        // var ctx = drawing.getContext;
-        // console.log(ctx);
-        if(drawing.getContext){
-            var context = drawing.getContext("2d");
-
-            context.fillStyle = "red";
-
-            context.beginPath();
-            context.arc(100, 100, 100, 0, 2*Math.PI, false);
-
-            //moveTo的作用是从一个点移到另外一个点，这两个点之间不描绘线段。
-            context.moveTo(195, 100);
-            context.arc(100, 100, 95, 0, 2*Math.PI, false);
-
-            context.moveTo(100, 100);
-            context.lineTo(100, 15);
-
-            context.moveTo(100, 100);
-            context.lineTo(35, 100);
-
-            //调用stroke方法，才能把图形绘制到画布上
-            context.stroke();
-        }
-    }
-
+    drawClock();
     // 15.2.4 绘制文本
-    function drawText() {
-        var drawing = document.getElementById("drawing");
-        if(drawing.getContext){
-            var context = drawing.getContext("2d");
-            context.font = "bold";
-            context.textAlign = "center";
-            context.textBaseline = "middle";
-            context.fillText("12", 100, 20);
+    drawText();
+    // measureText width
+    drawText2();
+    // 15.2.5 变换
+    bianHuan();
 
-            context.textAlign = "start";
-            context.fillText("13", 100, 40);
+//    test
+//    test();
 
-            context.textAlign = "end";
-            context.fillText("11", 100, 60);
-        }
-    }
-    
-    function drawText2() {
-        var drawing = document.getElementById("drawing2");
-        if(drawing.getContext){
-            var context = drawing.getContext("2d");
-            var fontSize = 100;
-            var font = "14px Arial";
-            var text = "Hello world!";
-            var t1 = "Font size is ";
-            var t2 = " px";
-            context.font = fontSize + font;
-            while (context.measureText(text).width > 140) {
-                fontSize--;
-                context.font = fontSize + font;
-            }
-            context.fillText(text, 10, 10);
-            context.fillText(t1 + fontSize + t2, 10, 50);
-        }
-    }
-    
-    function bianHuan() {
-        
-    }
+//    test drew border
+    testDrawBorder();
 
-    function drawImage() {
+//    testPrint();
+  }
 
+  //15.2.3 绘制路径
+  function drawClock() {
+    var drawing = document.getElementById("drawing");
+    // var ctx = drawing.getContext;
+    // console.log(ctx);
+    if(drawing.getContext){
+      var context = drawing.getContext("2d");
+
+      context.fillStyle = "red";
+
+      context.beginPath();
+      context.arc(100, 100, 100, 0, 2*Math.PI, false);
+
+      //moveTo的作用是从一个点移到另外一个点，这两个点之间不描绘线段。
+      context.moveTo(195, 100);
+      context.arc(100, 100, 95, 0, 2*Math.PI, false);
+
+      context.moveTo(100, 100);
+      context.lineTo(100, 15);
+
+      context.moveTo(100, 100);
+      context.lineTo(35, 100);
+
+      //调用stroke方法，才能把图形绘制到画布上
+      context.stroke();
     }
+  }
+
+  // 15.2.4 绘制文本
+  function drawText() {
+    var drawing = document.getElementById("drawing");
+    if(drawing.getContext){
+      var context = drawing.getContext("2d");
+      context.font = "bold";
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.fillText("12", 100, 20);
+
+      context.textAlign = "start";
+      context.fillText("13", 100, 40);
+
+      context.textAlign = "end";
+      context.fillText("11", 100, 60);
+    }
+  }
+
+  function drawText2() {
+    var drawing = document.getElementById("drawing2");
+    if(drawing.getContext){
+      var context = drawing.getContext("2d");
+      var fontSize = 100;
+      var font = "14px Arial";
+      var text = "Hello world!";
+      var t1 = "Font size is ";
+      var t2 = " px";
+      context.font = fontSize + font;
+      while (context.measureText(text).width > 140) {
+        fontSize--;
+        context.font = fontSize + font;
+      }
+      context.fillText(text, 10, 10);
+      context.fillText(t1 + fontSize + t2, 10, 50);
+    }
+  }
+
+  function bianHuan() {
+
+  }
+
+  function drawImage() {
+
+  }
+
+  //  测试如果两行字的空间小于字体的大小，是否会显示字体？答案：会显示，只是会重叠。
+  function test(){
+    var drawing = document.getElementById("test");
+    if(drawing.getContext){
+      var context = drawing.getContext("2d");
+      var fontSize = 20;
+      var fontSubfix = "px Arial";
+      var font = fontSize + fontSubfix;
+      var text = "Hello world!";
+      var text2 = "Jerry a jerry!";
+
+      context.font = font;
+      context.fillText(text, 0,100);
+      context.fillText(text2, 0,110);
+    }
+  }
+
+  //  绘制边框
+  function testDrawBorder() {
+    var canvas = document.getElementById('test_myCanvas');
+    var context = canvas.getContext('2d');
+    context.beginPath();
+    context.rect(188.0, 50, 200, 100.375);
+    context.fillStyle = 'white';
+    context.fill();
+    context.lineWidth = 1;
+    context.strokeStyle = 'black';
+    context.stroke();
+  }
+
+  function testPrint() {
+    window.print();
+  }
 </script>
 </html>

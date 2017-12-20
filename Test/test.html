@@ -1,24 +1,13 @@
-<!--
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
-<span>AAAAA</span>
-<script type="text/javascript">
-  document.write(document.body.innerHTML);
-  console.log(document.innerHTML);
-</script>
-</body>
-</html>-->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="../lib/jquery-3.2.1.js"></script>
     <script language="JavaScript">
-      <!--
+      function main() {
+        traverseJsonSimpleObj();
+      }
+
       function doPrint() {
         bdhtml = window.document.body.innerHTML;
         sprnstr = "\<!--startprint--\>";
@@ -29,10 +18,25 @@
         window.print();
         location.reload();
       }
-      //-->
+
+      function traverseJsonSimpleObj(){
+        var jsonObj = {"name": "kevin", "age": 27, "sex": "男", "city": "shenzhen"};
+        for(var key in jsonObj){
+          var html = "<p>"
+          html +=  (key + ' : ' + jsonObj[key]);
+          html += "</p>";
+          $("#out").append(html);
+        }
+      }
+
     </script>
 </head>
 <body>
+<!--1 main-->
+<div>
+    <input type="button" value="main" onclick="main()">
+</div>
+<!--2-->
 <!--startprint-->
 <table width="700" align="left" border="1">
     <tr>
@@ -40,6 +44,7 @@
     </tr>
 </table>
 <!--endprint-->
-<input type="button" value="打印" onclick="doPrint()">
+<!--3-->
+<div id="out"></div>
 </body>
 </html>
